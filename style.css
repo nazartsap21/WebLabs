@@ -1,0 +1,70 @@
+@import url('styles/fonts.css');
+@import url('styles/header.css');
+@import url('styles/hero-section.css');
+@import url('styles/info-section.css');
+@import url('styles/banner.css');
+@import url('styles/footer.css');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 24px 80px 52px;
+}
+
+
+h1 {
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 2.5rem;
+    color: rgba(34, 34, 34, 1);
+}
+
+h2 {
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 1.6rem;
+    color: rgba(34, 34, 34, 1);
+}
+
+h4 {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 1rem;
+}
+
+h5 {
+    font-family: 'Gilroy-Regular', sans-serif;
+    /*gf*/
+    color: rgba(115, 115, 141, 1);
+    font-size: 0.9rem;
+    line-height: 22px;
+}
+
+h6 {
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(115, 115, 141, 1);
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.green-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(228, 247, 242, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+

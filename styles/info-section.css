@@ -1,0 +1,171 @@
+.info-section {
+    max-width: 836px;
+    padding: 110px 0 66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    row-gap: 90px;
+
+    .reminders {
+        display: flex;
+        column-gap: 42px;
+
+        .reminders-examples {
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+            width: 380px;
+
+            .reminder-example {
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                padding: 16px 16px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-radius: 10px;
+                p {
+                    font-family: 'Gilroy-Regular', sans-serif;
+                    font-size: 0.7rem;
+                }
+                strong {
+                    font-family: 'Gilroy-Medium', sans-serif;
+                }
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    span {
+                        color: rgba(38, 194, 150, 1);
+                    }
+                }
+            }
+        }
+
+        .reminder-description {
+            width: 344px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+
+            .reminder-details {
+                display: grid;
+                grid-template-columns: 0.6fr 1fr;
+                grid-row-gap: 16px;
+
+                .reminder-detail {
+                    display: flex;
+                    column-gap: 6px;
+                }
+            }
+        }
+    }
+
+    .sync {
+        display: flex;
+        column-gap: 52px;
+        align-items: flex-end;
+
+        .green-img {
+            img {
+                width: 28px;
+                height: 22px;
+            }
+        }
+
+        .sync-example {
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+            padding: 25px 16px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 10px;
+            width: 352px;
+            ul {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+                li {
+                    display: flex;
+                    column-gap: 8px;
+                    h6 {
+                        color: rgba(34, 34, 34, 0.8);
+                    }
+                }
+            }
+            .sync-user {
+                display: flex;
+                column-gap: 8px;
+                align-items: center;
+            }
+        }
+
+
+        .sync-description {
+            width: 378px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+
+            .sync-details {
+                display: grid;
+                grid-template-columns: 0.7fr 1fr;
+                grid-row-gap: 16px;
+
+                .sync-detail {
+                    display: flex;
+                    column-gap: 6px;
+                }
+            }
+        }
+    }
+
+    .connection {
+        display: flex;
+        column-gap: 42px;
+        padding-top: 20px;
+
+        .connection-example {
+            display: flex;
+            align-self: flex-end;
+            align-items: flex-start;
+            column-gap: 22px;
+            width: 380px;
+
+            padding: 22px 16px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 10px;
+
+            .example-text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                p {
+                    font-family: 'Gilroy-Regular', sans-serif;
+                    font-size: 0.6rem;
+                    color: rgba(115, 115, 141, 0.8);
+                }
+            }
+            button {
+                background: none;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .connection-description {
+            width: 358px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 28px;
+
+            .connection-text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+            }
+        }
+    }
+
+}

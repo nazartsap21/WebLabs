@@ -1,0 +1,41 @@
+.hero-section {
+    display: flex;
+    column-gap: 110px;
+    justify-content: space-between;
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+        width: 430px;
+        padding-top: 80px;
+
+        .hero-form {
+            display: flex;
+            margin-top: 4px;
+            width: 100%;
+            position: relative;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 25px;
+
+
+            input[type=text] {
+                border: none;
+                width: 268px;
+                padding: 14px 16px;
+                outline: none;
+                border-radius: 25px 0 0 25px;
+
+            }
+
+            input[type=submit] {
+                border: none;
+                background-color: rgba(25, 67, 239, 1);
+                padding: 14px 44px;
+                border-radius: 25px;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

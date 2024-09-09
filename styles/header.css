@@ -1,0 +1,47 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 64px;
+    justify-content: space-between;
+
+    a {
+        text-decoration: none;
+        color: rgba(115, 115, 141, 1);
+        font-family: 'Gilroy-SemiBold', sans-serif;
+        font-size: 0.7rem;
+    }
+    .logo-container {
+        display: flex;
+        column-gap: 42px;
+        align-items: center;
+        margin-right: 100px;
+
+        .logo {
+            font-size: 1.6rem;
+        }
+    }
+
+    .navigation {
+        ul {
+            list-style-type: none;
+            display: flex;
+            column-gap: 38px;
+            align-items: center;
+        }
+    }
+
+    .try-free-header {
+        background: inherit;
+        border: 1px solid rgba(25, 67, 239, 1);
+        border-radius: 25px;
+        padding: 10px 27px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .try-free-header:hover {
+        background: rgba(25, 67, 239, 1);
+        color: white;
+    }
+}
