@@ -3,7 +3,7 @@
     padding: 110px 0 66px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     row-gap: 90px;
 
     .reminders {

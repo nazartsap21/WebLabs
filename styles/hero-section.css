@@ -1,7 +1,7 @@
 .hero-section {
     display: flex;
-    column-gap: 110px;
-    justify-content: space-between;
+    column-gap: 11svw;
+
     .hero-content {
         display: flex;
         flex-direction: column;

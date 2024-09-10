@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding-bottom: 64px;
+    padding: 0 80px 64px;
     justify-content: space-between;
 
     a {
@@ -34,6 +34,7 @@
     .try-free-header {
         background: inherit;
         border: 1px solid rgba(25, 67, 239, 1);
+        color: rgba(25, 67, 239, 1);
         border-radius: 25px;
         padding: 10px 27px;
         cursor: pointer;
