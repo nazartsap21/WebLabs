@@ -1,0 +1,454 @@
+.info-section {
+    padding: 110px 0 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 90px;
+
+    .reminders {
+        display: flex;
+        justify-content: center;
+        column-gap: 42px;
+
+        .reminders-examples {
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+            width: 47%;
+
+            .reminder-example {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                padding: 16px 16px;
+                box-shadow: var(--dark-grey) 0px 7px 29px 0px;
+                border-radius: 10px;
+                img {
+                    aspect-ratio: 1/1;
+                }
+                p {
+                    color: #222222CC;
+                }
+                strong {
+                    font-family: 'Gilroy-Medium', sans-serif;
+                }
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: var(--black);
+                    span {
+                        color: var(--green);
+                    }
+                }
+            }
+        }
+
+        .reminder-description {
+            width: 43%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+
+            .reminder-details {
+                display: grid;
+                grid-template-columns: 0.6fr 1fr;
+                grid-row-gap: 16px;
+
+                .reminder-detail {
+                    display: flex;
+                    column-gap: 6px;
+                    img {
+                        aspect-ratio: 1/1;
+                    }
+                }
+            }
+        }
+    }
+
+    .sync {
+        display: flex;
+        column-gap: 52px;
+        justify-content: center;
+        align-items: flex-end;
+
+        .green-img img{
+            width: 28px;
+            height: 22px;
+        }
+
+        .sync-example {
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+            padding: 25px 16px;
+            box-shadow: var(--dark-grey) 0px 7px 29px 0px;
+            border-radius: 10px;
+            width: 43%;
+            ul {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+                li {
+                    display: flex;
+                    column-gap: 8px;
+                    h6 {
+                        color: var(--black);
+                    }
+                }
+            }
+            .sync-user {
+                display: flex;
+                column-gap: 8px;
+                align-items: center;
+            }
+        }
+
+        .sync-content {
+            width: 46%;
+
+            .sync-description {
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+                h3 {
+                  padding-right: 50px;
+                }
+
+                .sync-details {
+                    display: grid;
+                    grid-template-columns: 0.7fr 1fr;
+                    grid-row-gap: 16px;
+
+                    .sync-detail {
+                        display: flex;
+                        column-gap: 6px;
+                        img {
+                            aspect-ratio: 1/1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .connection {
+        display: flex;
+        justify-content: center;
+        column-gap: 52px;
+        padding-top: 20px;
+
+        .connection-example {
+            width: 46%;
+            display: flex;
+            align-self: flex-end;
+            align-items: flex-start;
+            column-gap: 22px;
+
+            padding: 22px 16px;
+            box-shadow: var(--dark-grey) 0px 7px 29px 0px;
+            border-radius: 10px;
+
+            .example-text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                p {
+                    font-family: 'Gilroy-Regular', sans-serif;
+                    font-size: 0.6rem;
+                    color: var(--grey);
+                    line-height: 17px;
+                }
+            }
+            button {
+                background: none;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .connection-description {
+            width: 43%;
+            display: flex;
+            flex-direction: column;
+
+            .connection-text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+
+                h3 {
+                    padding-right: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px){
+    .info-section {
+        padding: clamp(6.875rem, 0.809rem + 8.088vw, 13.75rem) calc((100% - 1000px)/2.7) clamp(4.125rem, 0.485rem + 4.853vw, 8.25rem);
+        row-gap: clamp(5.625rem, 3.971rem + 2.206vw, 7.5rem);
+
+        .reminders {
+            column-gap: 0;
+            justify-content: space-between;
+
+            .reminders-examples {
+                width: 49%;
+                row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+
+                .reminder-example {
+                    column-gap: clamp(0.5rem, 0.059rem + 0.588vw, 1rem);
+                    padding: clamp(1rem, 0.559rem + 0.588vw, 1.5rem) clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                    border-radius: clamp(0.625rem, 0.074rem + 0.735vw, 1.25rem);
+                    img {
+                        height: clamp(2.125rem, 0.691rem + 1.912vw, 3.75rem);
+                    }
+                }
+            }
+
+            .reminder-description {
+                width: 45%;
+                row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                .reminder-details {
+                    grid-row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                    .reminder-detail {
+                        img{
+                            height: clamp(0.625rem, 0.074rem + 0.735vw, 1.25rem);
+                        }
+                    }
+                }
+            }
+        }
+
+        .sync {
+            column-gap: 0;
+            justify-content: space-between;
+
+            .green-img img{
+                aspect-ratio: 28/22;
+                width: clamp(1.375rem, 0.051rem + 1.765vw, 2.875rem);
+                height: auto;
+            }
+            .sync-example {
+                width: 45%;
+                row-gap: clamp(2rem, 0.235rem + 2.353vw, 4rem);
+                padding: clamp(1.563rem, 0.625rem + 1.25vw, 2.625rem) clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                border-radius: clamp(0.625rem, 0.074rem + 0.735vw, 1.25rem);
+                ul {
+                    row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                    li {
+                        column-gap: clamp(0.5rem, 0.059rem + 0.588vw, 1rem);
+                        h6 {
+                            line-height: 150%;
+                        }
+                        img {
+                            height: clamp(0.938rem, 0.331rem + 0.809vw, 1.625rem);
+                        }
+                    }
+                }
+
+                .sync-user {
+                    column-gap: clamp(0.5rem, 0.059rem + 0.588vw, 1rem);
+                    img {
+                        height: clamp(2.625rem, 1.412rem + 1.618vw, 4rem);
+                    }
+                }
+            }
+            .sync-content {
+                width: 48%;
+                .sync-description {
+                    row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                    .sync-details {
+                        grid-row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+                        .sync-detail {
+                            column-gap: clamp(0.375rem, 0.044rem + 0.441vw, 0.75rem);
+                            img {
+                                height: clamp(0.625rem, 0.074rem + 0.735vw, 1.25rem);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .connection {
+            padding-top: clamp(1.25rem, 0.147rem + 1.471vw, 2.5rem);
+            column-gap: 0;
+            justify-content: space-between;
+
+            .connection-example {
+                width: 50%;
+
+                column-gap: clamp(1.375rem, 0.603rem + 1.029vw, 2.25rem);
+
+                padding: clamp(1.375rem, 0.603rem + 1.029vw, 2.25rem) clamp(1rem, 0.559rem + 0.588vw, 1.5rem);
+                border-radius: clamp(0.625rem, 0.074rem + 0.735vw, 1.25rem);
+
+                .example-text {
+                    row-gap: clamp(1.25rem, 0.147rem + 1.471vw, 2.5rem);
+                    p {
+                        font-size: clamp(0.6rem, 0.247rem + 0.471vw, 1rem);
+                        line-height: clamp(0.938rem, 0.331rem + 0.809vw, 1.625rem);
+                    }
+                }
+
+                 button img{
+                     aspect-ratio: 14/4;
+                     width: clamp(0.875rem, 0.324rem + 0.735vw, 1.5rem);
+                     height: auto;
+                 }
+            }
+
+            .connection-description {
+                width: 44%;
+
+                .green-img img{
+                    aspect-ratio: 26/25;
+                    width: clamp(1.375rem, 0.051rem + 1.765vw, 2.875rem);
+                    height: auto;
+                }
+
+                .connection-text {
+                    row-gap: clamp(1rem, 0.118rem + 1.176vw, 2rem);
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .info-section {
+        padding: 80px 0 56px;
+        row-gap: 70px;
+
+        .reminders {
+            flex-direction: column-reverse;
+            align-items: center;
+            row-gap: 40px;
+
+            .reminders-examples{
+                width: 60%;
+            }
+
+            .reminder-description {
+                width: 60%;
+            }
+        }
+
+        .sync{
+            flex-direction: column;
+            align-items: center;
+            row-gap: 40px;
+
+            .sync-example {
+                width: 60%;
+            }
+
+            .sync-content {
+                width: 60%;
+            }
+        }
+
+        .connection {
+            flex-direction: column-reverse;
+            align-items: center;
+            row-gap: 40px;
+
+            .connection-example {
+                width: 60%;
+                align-self: center;
+            }
+
+            .connection-description{
+                width: 60%;
+            }
+
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .info-section {
+        padding: 60px 0 48px;
+        row-gap: 50px;
+
+        .reminders {
+            row-gap: 30px;
+            .reminders-examples {
+                width: 80%;
+            }
+            .reminder-description {
+                width: 80%;
+                .reminder-details .reminder-detail img {
+                    max-width: 10px;
+                }
+            }
+        }
+
+        .sync {
+            row-gap: 30px;
+            .sync-example {
+                width: 80%;
+            }
+            .sync-content {
+                width: 80%;
+                .sync-description .sync-details .sync-detail img {
+                    max-width: 10px;
+                }
+            }
+        }
+
+        .connection {
+            row-gap: 30px;
+            .connection-example {
+                width: 80%;
+            }
+            .connection-description {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px){
+    .info-section {
+        padding: 50px 0 36px;
+        row-gap: 40px;
+
+        .reminders {
+            row-gap: 25px;
+            .reminders-examples {
+                width: 90%;
+            }
+            .reminder-description {
+                width: 90%;
+            }
+        }
+
+        .sync {
+            row-gap: 25px;
+            .sync-example {
+                width: 90%;
+            }
+            .sync-content {
+                width: 90%;
+            }
+        }
+
+        .connection {
+            row-gap: 25px;
+            .connection-example {
+                width: 90%;
+            }
+            .connection-description {
+                width: 90%;
+            }
+        }
+    }
+}

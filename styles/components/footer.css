@@ -1,0 +1,35 @@
+.footer {
+    display: flex;
+    padding: 35px 0 52px;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 18px;
+    .h1 {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .footer {
+        padding: clamp(2.188rem, 0.257rem + 2.574vw, 4.375rem) 0 52px;
+        row-gap: clamp(1.125rem, 0.132rem + 1.324vw, 2.25rem);
+
+        .h1 {
+            font-size: clamp(1rem, 0.118rem + 1.176vw, 1.8rem);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 28px 0 42px;
+
+        .h1 {
+            font-size: 0.9rem;
+        }
+
+        .h6 {
+            font-size: 0.6rem;
+        }
+    }
+}
