@@ -1,10 +1,10 @@
-@import url('styles/vars.css');
-@import url('styles/components/fonts.css');
-@import url('styles/components/header.css');
-@import url('styles/components/hero-section.css');
-@import url('styles/components/info-section.css');
-@import url('styles/components/banner.css');
-@import url('styles/components/footer.css');
+@import url('vars.css');
+@import url('home/fonts.css');
+@import url('home/header.css');
+@import url('home/hero-section.css');
+@import url('home/info-section.css');
+@import url('home/banner.css');
+@import url('home/footer.css');
 
 
 
@@ -60,6 +60,25 @@ a {
     font-family: 'Gilroy-SemiBold', sans-serif;
     line-height: 11px;
     font-size: 0.7rem;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
 }
 
 .green-img {

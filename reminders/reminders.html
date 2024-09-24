@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationz</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/reminders/reminders.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <h1 class="logo h1">Relationz</h1>
+            </a>
+            <a href="#">Login</a>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Enterprise</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+        </nav>
+        <a class="try-free-header" href="#">
+            Try it for free
+        </a>
+        <nav class="navigation-mobile">
+            <input type="checkbox" id="burger-toggle">
+            <label class="burger-toggler" for="burger-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Enterprise</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Login</a></li>
+                <li>
+                    <a class="try-free-header" href="#">
+                        Try it for free
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="reminders-menu">
+            <div class="create-container">
+                <h2 class="h2">Reminders</h2>
+                <button class="create-reminder">Create reminder</button>
+            </div>
+            <form id="search-form" onsubmit="return false">
+                <label class="search-bar">
+                    <label class="search-input">
+                        <input type="text" placeholder="Type something..." name="search" id="search-input">
+                        <button type="reset" id="reset-button"><img src="../assets/img/reset.svg" alt="reset"></button>
+                    </label>
+                    <span class="vertical-line"></span>
+                    <button type="submit" id="search-button"><img src="../assets/img/search.svg" alt="search"></button>
+                </label>
+            </form>
+        </section>
+        <section class="main-content">
+            <div class="sort-menu">
+                <form>
+                    <label for="sort" class="sort h4">Sort:</label>
+                    <select name="sort" id="sort">
+                        <option value="" selected disabled hidden>None</option>
+                        <option value="sooner">By due date (sooner first)</option>
+                        <option value="later">By due date (later first)</option>
+                        <option value="a-z">A-Z</option>
+                        <option value="z-a">Z-A</option>
+                    </select>
+                </form>
+                <hr>
+                <div class="counter-container">
+                    <h3 class="h4">Count showed reminders:</h3>
+                    <button id="count-reminders">Count</button>
+                    <h3 class="h6">Reminder amount: <span class="h3" id="amount"></span></h3>
+                </div>
+            </div>
+
+            <div class="reminders-container" id="reminders-container">
+            </div>
+            <template id="reminder-template">
+                <div class="reminder">
+                    <p class="id" id="id"></p>
+                    <div class="text">
+                        <h3 class="h2" id="title"></h3>
+                        <p class="h4" id="description"></p>
+                        <p class="h4" id="price"></p>
+                    </div>
+                    <div class="dates">
+                        <p class="h6">Due date: <span id="due-date"></span></p>
+                        <p class="h6">Last updated: <span id="last-updated"></span></p>
+                    </div>
+                    <div class="buttons">
+                        <button class="update-button" id="update">Update</button>
+                        <button class="delete-button" id="delete">Delete</button>
+                    </div>
+                </div>
+            </template>
+        </section>
+    </main>
+    <footer class="footer">
+        <h2 class="h1">Relationz</h2>
+        <h3 class="h6">Copyright © 2010 - 2019 Relationz Ltd. All rights reserved.</h3>
+    </footer>
+    <script src="reminders.js"></script>
+</body>
+</html>
