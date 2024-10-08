@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/reminders/reminders.css">
 </head>
-<body>
+<body id="body">
     <header class="header">
         <div class="logo-container">
             <a href="../index.html">
@@ -49,7 +49,7 @@
         <section class="reminders-menu">
             <div class="create-container">
                 <h2 class="h2">Reminders</h2>
-                <button class="create-reminder">Create reminder</button>
+                <button class="create-reminder" id="create-reminder">Create reminder</button>
             </div>
             <form id="search-form" onsubmit="return false">
                 <label class="search-bar">
@@ -103,6 +103,42 @@
                 </div>
             </template>
         </section>
+        <div class="modal-background" id="modal-background"></div>
+        <div class="modal" id="create-modal">
+            <div class="modal-header">
+                <h2 class="h2">Create reminder</h2>
+                <button id="close-create-modal"><img src="../assets/img/reset.svg" alt="close"></button>
+            </div>
+            <form onsubmit="return false" id="create-modal-form">
+                <label for="create-modal-title" class="h4">Title</label>
+                <input type="text" id="create-modal-title" placeholder="Title" name="modal-title">
+                <label for="create-modal-description" class="h4">Description</label>
+                <textarea id="create-modal-description" placeholder="Description" rows="5" name="modal-description"></textarea>
+                <label for="create-modal-price" class="h4">Price</label>
+                <input type="number" id="create-modal-price" placeholder="Price" min="0" name="modal-price">
+                <label for="create-modal-due-date" class="h4">Due date</label>
+                <input type="datetime-local" id="create-modal-due-date" name="modal-due-date">
+                <button class="submit-modal" id="submit-create-modal" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="modal" id="update-modal">
+            <div class="modal-header">
+                <h2 class="h2">Update reminder</h2>
+                <button id="close-update-modal"><img src="../assets/img/reset.svg" alt="close"></button>
+            </div>
+            <form onsubmit="return false" id="update-modal-form">
+                <p class="modal-id" id="update-modal-id"></p>
+                <label for="update-modal-title" class="h4">Title</label>
+                <input type="text" id="update-modal-title" placeholder="Title" name="modal-title">
+                <label for="update-modal-description" class="h4">Description</label>
+                <textarea id="update-modal-description" placeholder="Description" rows="5" name="modal-description"></textarea>
+                <label for="update-modal-price" class="h4">Price</label>
+                <input type="number" id="update-modal-price" placeholder="Price" min="0" name="modal-price">
+                <label for="update-modal-due-date" class="h4">Due date</label>
+                <input type="datetime-local" id="update-modal-due-date" name="modal-due-date">
+                <button class="submit-modal" id="submit-update-modal" type="submit">Submit</button>
+            </form>
+        </div>
     </main>
     <footer class="footer">
         <h2 class="h1">Relationz</h2>
