@@ -1,0 +1,24 @@
+header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  column-gap: 30%;
+  border-bottom: 1px solid #000000;
+}
+
+.navigation ul{
+  display: flex;
+  column-gap: 80px;
+  list-style-type: none;
+
+  a {
+    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+    padding: 8px 24px;
+  }
+
+  a:hover, :active{
+    background: #e0e0e0;
+  }
+}
