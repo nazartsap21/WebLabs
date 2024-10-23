@@ -1,0 +1,12 @@
+.reminders-menu {
+  margin: 30px 120px 20px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--black);
+
+  .create-container {
+    display: flex;
+    column-gap: 26px;
+  }
+}

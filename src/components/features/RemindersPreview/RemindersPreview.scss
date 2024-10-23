@@ -1,0 +1,32 @@
+.reminders-preview {
+  padding: 20px 80px 60px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  a {
+    width: fit-content;
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    column-gap: 20px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover, :active{
+      background: #e0e0e0;
+    }
+  }
+
+  img[alt="bird"] {
+    rotate: -90deg;
+    color: black;
+  }
+}
+
+.reminders-preview-container {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 20px;
+}

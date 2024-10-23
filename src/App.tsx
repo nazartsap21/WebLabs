@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Layout from "./Layouts/Layout";
+import HomePage from "./components/pages/HomePage/HomePage";
+import Layout from "./components/Layouts/Layout";
+import CatalogPage from "./components/pages/CatalogPage/CatalogPage";
 
 
 function App() {
@@ -12,6 +13,12 @@ function App() {
               <Route
                   index
                   element={<HomePage />}
+              />
+          </Route>
+          <Route path="/catalog" element={<Layout />}>
+              <Route
+                  index
+                  element={<CatalogPage />}
               />
           </Route>
       </Routes>

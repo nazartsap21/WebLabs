@@ -1,0 +1,14 @@
+.view-more-button {
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  color: var(--green);
+  padding: 6px 16px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: var(--green);
+    color: var(--white);
+  }
+  &:active {
+    scale: 0.95;
+  }
+}

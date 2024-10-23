@@ -18,7 +18,11 @@ header {
     padding: 8px 24px;
   }
 
-  a:hover, :active{
+  a:hover{
+    background: #e0e0e0;
+  }
+
+  .active {
     background: #e0e0e0;
   }
 }

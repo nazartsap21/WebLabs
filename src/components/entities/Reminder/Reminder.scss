@@ -1,0 +1,47 @@
+.reminder {
+  width: 300px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: space-between;
+  border: 2px solid var(--black);
+  border-radius: 8px;
+  padding: 8px 10px;
+
+  .id {
+    display: none;
+  }
+
+  .text, .dates {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .text {
+    h3 {
+      font-size: 1.5rem;
+      color: var(--black);
+      line-height: 30px;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .dates {
+    row-gap: 4px;
+
+    p {
+      font-size: 0.7rem;
+      color: var(--grey);
+    }
+  }
+
+  .buttons {
+    display: flex;
+    column-gap: 8px;
+    justify-content: space-between;
+  }
+}
