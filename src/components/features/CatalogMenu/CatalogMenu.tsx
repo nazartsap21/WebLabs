@@ -4,15 +4,15 @@ import SearchForm from "../../entities/SearchForm/SearchForm";
 import './CatalogMenu.scss';
 import ModalReminderForm from "../../entities/ModalReminderForm/ModalReminderForm";
 import {defaultReminder, IReminder} from "../../../interfaces/reminderInterfaces";
+import {useReminders} from "../../context/RemindersContext";
 
 interface CatalogMenuProps {
-    reminders: IReminder[];
-    setReminders: (reminders: IReminder[]) => void;
+    setSearchOptions: (searchOptions: { search: string, sort: string, period: string, priority: string, subject: string }) => void;
 }
 
 
 const CatalogMenu: FC<CatalogMenuProps> = (props) => {
-
+    const {reminders, setReminders} = useReminders();
     const [active, setActive] = useState<boolean>(false);
     const [newReminder, setNewReminder] = useState<IReminder>(defaultReminder);
 
@@ -27,14 +27,14 @@ const CatalogMenu: FC<CatalogMenuProps> = (props) => {
             return alert("The due date cannot be in the past.");
         }
 
-        const isNameUnique = !props.reminders.some(doctor => doctor.title === newReminder.title);
+        const isNameUnique = !reminders.some(reminder => reminder.title === newReminder.title);
         if (!isNameUnique) {
             alert('Reminder title must be unique');
             return;
         }
         newReminder.lastUpdated = new Date().toISOString();
-        const max_id = props.reminders.length > 0 ? Math.max(...props.reminders.map(reminder => reminder.id)) : 0;
-        props.setReminders([...props.reminders, { ...newReminder, id: max_id + 1 }]);
+        const max_id = reminders.length > 0 ? Math.max(...reminders.map(reminder => reminder.id)) : 0;
+        setReminders([...reminders, { ...newReminder, id: max_id + 1 }]);
         setActive(false);
         setNewReminder(defaultReminder);
 

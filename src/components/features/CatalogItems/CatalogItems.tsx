@@ -1,4 +1,4 @@
-import React, {Dispatch, FC, FormEvent, useState} from 'react';
+import React, {FC, FormEvent, useState} from 'react';
 import './CatalogItems.scss';
 import SortMenu from "../../entities/SortMenu/SortMenu";
 import CountPrice from "../../common/CountPrice/CountPrice";
@@ -6,14 +6,16 @@ import FilterMenu from "../../entities/FilterMenu/FilterMenu";
 import {defaultReminder, IReminder} from "../../../interfaces/reminderInterfaces";
 import Reminder from "../../entities/Reminder/Reminder";
 import ModalReminderForm from "../../entities/ModalReminderForm/ModalReminderForm";
+import {useReminders} from "../../context/RemindersContext";
 
 
 interface CatalogItemsProps {
-    reminders: IReminder[];
-    setReminders: Dispatch<React.SetStateAction<IReminder[]>>;
+    searchOptions: { search: string, sort: string, period: string, priority: string, subject: string };
+    setSearchOptions: (searchOptions: { search: string, sort: string, period: string, priority: string, subject: string }) => void;
 }
 
 const CatalogItems: FC<CatalogItemsProps> = (props) => {
+    const {reminders, setReminders} = useReminders();
     const [active, setActive] = useState<boolean>(false);
     const [editedReminder, setEditedReminder] = useState<IReminder>(defaultReminder);
 
@@ -25,16 +27,14 @@ const CatalogItems: FC<CatalogItemsProps> = (props) => {
             return;
         }
 
-        const isNameUnique = !props.reminders.some(reminder => reminder.title === editedReminder.title);
-        if (!isNameUnique) {
-            alert('Reminder title must be unique');
-            return;
+        if (new Date(editedReminder.dueDate) < new Date()) {
+            return alert("The due date cannot be in the past.");
         }
 
-        const updatedReminders = props.reminders.map(reminder =>
+        const updatedReminders = reminders.map(reminder =>
             reminder.id === editedReminder.id ? editedReminder : reminder
         );
-        props.setReminders(updatedReminders);
+        setReminders(updatedReminders);
         setActive(false);
         setEditedReminder(defaultReminder);
     }
@@ -49,11 +49,11 @@ const CatalogItems: FC<CatalogItemsProps> = (props) => {
                 <CountPrice/>
             </div>
             <div className={"reminders-container"}>
-                {props.reminders.map((value, key) => (
+                {reminders.map((value, key) => (
                     <Reminder
                         key={key}
                         reminder={value}
-                        onDelete={() => {props.setReminders(props.reminders.filter(reminder => reminder.id !== value.id))}}
+                        onDelete={() => {setReminders(reminders.filter(reminder => reminder.id !== value.id))}}
                         onUpdateModal={() => {setActive(true); setEditedReminder(value)}}
                     />
                 ))}
