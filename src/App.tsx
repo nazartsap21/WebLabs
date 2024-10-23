@@ -14,12 +14,7 @@ function App() {
                   index
                   element={<HomePage />}
               />
-          </Route>
-          <Route path="/catalog" element={<Layout />}>
-              <Route
-                  index
-                  element={<CatalogPage />}
-              />
+              <Route path={'catalog'} element={<CatalogPage />} />
           </Route>
       </Routes>
   );
