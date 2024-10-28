@@ -5,6 +5,7 @@ import HomePage from "./components/pages/HomePage/HomePage";
 import Layout from "./components/Layouts/Layout";
 import CatalogPage from "./components/pages/CatalogPage/CatalogPage";
 import {RemindersProvider} from "./components/context/RemindersContext";
+import ItemPage from "./components/pages/ItemPage/ItemPage";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                       element={<HomePage />}
                   />
                   <Route path={'catalog'} element={<CatalogPage />} />
+                  <Route path={'catalog/:id'} element={<ItemPage/>} />
               </Route>
           </Routes>
       </RemindersProvider>

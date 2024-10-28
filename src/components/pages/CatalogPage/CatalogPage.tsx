@@ -4,7 +4,7 @@ import CatalogItems from "../../features/CatalogItems/CatalogItems";
 
 
 const CatalogPage: FC = () => {
-    const [searchOptions, setSearchOptions] = useState<{ search: string, sort: string, period: string, priority: string, subject: string }>({ search: '', sort: 'price', period: '', priority: '', subject: '' });
+    const [searchOptions, setSearchOptions] = useState<{ search: string, sort: string, price: string, priority: string, subject: string }>({ search: '', sort: '', price: '', priority: '', subject: '' });
 
     return (
         <>

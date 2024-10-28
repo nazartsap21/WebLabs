@@ -5,6 +5,8 @@
     "description": "Call mom and wish her a happy birthday",
     "price": 100,
     "dueDate": "2024-10-22T18:14:40.604Z",
+    "priority": "high",
+    "subject": "family",
     "lastUpdated": "2024-10-22T18:14:40.604Z"
   },
   {
@@ -13,6 +15,8 @@
     "description": "Buy groceries for the week",
     "price": 200,
     "dueDate": "2024-10-23T18:14:40.604Z",
+    "priority": "medium",
+    "subject": "others",
     "lastUpdated": "2024-10-22T18:14:40.604Z"
   },
   {
@@ -21,6 +25,8 @@
     "description": "Send the report to the manager",
     "price": 50,
     "dueDate": "2024-10-24T18:14:40.604Z",
+    "priority": "high",
+    "subject": "job",
     "lastUpdated": "2024-10-22T18:14:40.604Z"
   },
   {
@@ -29,6 +35,8 @@
     "description": "Go to the gym and work out",
     "price": 400,
     "dueDate": "2024-10-25T18:14:40.604Z",
+    "priority": "low",
+    "subject": "health",
     "lastUpdated": "2024-10-22T18:14:40.604Z"
   }
 ]

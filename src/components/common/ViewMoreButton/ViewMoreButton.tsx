@@ -1,9 +1,14 @@
 import React, {FC} from 'react';
 import './ViewMoreButton.scss';
+import {Link} from "react-router-dom";
 
-const ViewMoreButton: FC = () => {
+interface ViewMoreButtonProps {
+    to: string;
+}
+
+const ViewMoreButton: FC<ViewMoreButtonProps> = (props) => {
     return (
-        <button className={"view-more-button"}>View more</button>
+        <Link to={props.to}  className={"view-more-button"}>View more</Link>
     );
 };
 

@@ -1,4 +1,6 @@
 .view-more-button {
+  display: flex;
+  justify-content: center;
   border: 1px solid var(--green);
   border-radius: 8px;
   color: var(--green);

@@ -41,7 +41,7 @@ const Reminder: FC<ReminderProps> = (props) => {
             <div className={"text"}>
                 <h3 id="title">{props.reminder.title}</h3>
                 <p id="description">{props.reminder.description}</p>
-                <p id="price">{props.reminder.price}</p>
+                <p id="price">{props.reminder.price}$</p>
             </div>
             <div className={"dates"}>
                 <p>Due date: <span>{dueDate}</span></p>
@@ -51,7 +51,7 @@ const Reminder: FC<ReminderProps> = (props) => {
                 <UpdateButton onUpdateModal={() => props.onUpdateModal()}/>
                 <DeleteButton onDelete={() => props.onDelete()}/>
             </div>
-            <ViewMoreButton />
+            <ViewMoreButton to={`${props.reminder.id}`}/>
         </div>
     );
 };

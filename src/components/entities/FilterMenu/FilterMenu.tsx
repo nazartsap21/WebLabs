@@ -2,27 +2,35 @@ import React, {FC} from 'react';
 import './FilterMenu.scss';
 import Select from "../../common/Select/Select";
 
-const FilterMenu: FC = () => {
+
+interface FilterMenuProps {
+    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
+}
+
+const FilterMenu: FC<FilterMenuProps> = (props) => {
     return (
         <form className={'filter-menu'}>
             <label>Filters</label>
             <Select
-                name={"Time period"}
-                values={["1d", "1w", "1m", "1m+"]}
-                options={["1 day", "1 day - 1 week", "1 week - 1 month", "1 month+"]}
-                onChange={e => {}}
+                name={"Price"}
+                values={["50", "50-200", "200-500", "500+"]}
+                options={["50", "50-200", "200-500", "500+"]}
+                value={""}
+                onChange={e => {props.setSearchOptions(prev => ({...prev, price: e.target.value}))}}
             />
             <Select
                 name={"Priority"}
-                values={["1", "2", "3", "4", "5"]}
-                options={["First priority", "Second priority", "Third priority", "Fourth priority", "Fifth priority"]}
-                onChange={e => {}}
+                values={["low", "medium", "high"]}
+                options={["Low", "Medium", "High"]}
+                value={""}
+                onChange={e => {props.setSearchOptions(prev => ({...prev, priority: e.target.value}))}}
             />
             <Select
                 name={"Subject"}
                 values={["family", "health", "job", "education", "hobby", "others"]}
                 options={["Family", "Health", "Job", "Education", "Hobby", "Others"]}
-                onChange={e => {}}
+                value={""}
+                onChange={e => {props.setSearchOptions(prev => ({...prev, subject: e.target.value}))}}
             />
         </form>
     );

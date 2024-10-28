@@ -7,7 +7,7 @@ import {defaultReminder, IReminder} from "../../../interfaces/reminderInterfaces
 import {useReminders} from "../../context/RemindersContext";
 
 interface CatalogMenuProps {
-    setSearchOptions: (searchOptions: { search: string, sort: string, period: string, priority: string, subject: string }) => void;
+    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
 }
 
 
@@ -46,7 +46,7 @@ const CatalogMenu: FC<CatalogMenuProps> = (props) => {
                     <h2 className="h2">Reminders</h2>
                     <CreateButton name={"Create reminder"} CreateModal={() => setActive(true)}/>
                 </div>
-                <SearchForm/>
+                <SearchForm setSearchOptions={props.setSearchOptions}/>
                 <ModalReminderForm
                     reminder={newReminder}
                     setReminder={setNewReminder}

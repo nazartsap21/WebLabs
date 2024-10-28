@@ -4,6 +4,8 @@ export interface IReminder {
     description: string;
     price: number;
     dueDate: string;
+    priority: string;
+    subject: string;
     lastUpdated: string;
 }
 
@@ -13,5 +15,7 @@ export const defaultReminder: IReminder = {
     description: '',
     price: 0,
     dueDate: '',
+    priority: '',
+    subject: '',
     lastUpdated: ''
 }

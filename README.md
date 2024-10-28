@@ -1,8 +1,8 @@
 ## Лабораторні роботи з дисципліни "Вебтехнології та вебдизайн"
 
 ### Виконав: Цап Назар Володимирович (ІР-21)
-### Лабораторна робота №7 (Варіант 10)
+### Лабораторна робота №8 (Варіант 10)
 
-#### React.js: Catalog page
+#### React.js: Item page
 
-Description: Continue work on your React App by adding a page with Items list (see the link to wireframe of Catalog page above).
+Description: Continue work on your React App by adding a page for your Item (see the link to wireframe of Item page above). Also, now, you have to make all your previous pages (Home & Catalog) more interactive.

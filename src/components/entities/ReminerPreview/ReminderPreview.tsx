@@ -1,15 +1,16 @@
 import React, {FC} from 'react';
 import './ReminderPreview.scss';
 import {IPrevReminder} from "../../../interfaces/previewInterface";
+import {Link} from "react-router-dom";
 
 
 const ReminderPreview: FC<IPrevReminder> = (props) => {
     return (
-        <div className={'reminder-preview'}>
+        <Link to={`catalog/${props.id}`} className={'reminder-preview'}>
             <h2>{props.title}</h2>
             <h3>{props.description}</h3>
-            <h4>Due: {props.dueDate}</h4>
-        </div>
+            <h4>Due: {props.dueDate.slice(0,16).replace('T', ' ')}</h4>
+        </Link>
     );
 };
 

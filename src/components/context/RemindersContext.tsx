@@ -7,8 +7,8 @@ const flattenedRemindersData: IReminder[] = remindersData.flat();
 interface RemindersContextProps {
     reminders: IReminder[];
     setReminders: React.Dispatch<React.SetStateAction<IReminder[]>>;
-    filters: { period: string; priority: string; subject: string };
-    setFilters: React.Dispatch<React.SetStateAction<{ period: string; priority: string; subject: string }>>;
+    filters: { price: number; priority: string; subject: string };
+    setFilters: React.Dispatch<React.SetStateAction<{ price: number; priority: string; subject: string }>>;
 }
 
 const RemindersContext = createContext<RemindersContextProps | undefined>(undefined);
@@ -23,7 +23,7 @@ export const useReminders = () => {
 
 export const RemindersProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [reminders, setReminders] = useState<IReminder[]>(flattenedRemindersData);
-    const [filters, setFilters] = useState<{ period: string; priority: string; subject: string }>({ period: '', priority: '', subject: '' });
+    const [filters, setFilters] = useState<{price: number, priority: string; subject: string }>({ price: 0, priority: '', subject: '' });
 
     return (
         <RemindersContext.Provider value={{ reminders, setReminders, filters, setFilters }}>
