@@ -34,7 +34,7 @@ const CatalogItems: FC<CatalogItemsProps> = ({reminders, setReminders, searchOpt
 
     const handleEditedReminder = async (e: FormEvent) => {
         e.preventDefault();
-        if (!editedReminder.title || !editedReminder.description || !editedReminder.price || !editedReminder.dueDate || !editedReminder.priority || !editedReminder.subject) {
+        if (!editedReminder.title || !editedReminder.description || !editedReminder.price || !editedReminder.dueDate || !editedReminder.subject) {
             alert('All fields are required');
             return;
         }

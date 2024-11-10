@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
 import './SortMenu.scss';
 import Select from "../../common/Select/Select";
+import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 
 interface SortMenuProps {
-    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
+    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
 }
 const SortMenu: FC<SortMenuProps> = (props) => {
     return (

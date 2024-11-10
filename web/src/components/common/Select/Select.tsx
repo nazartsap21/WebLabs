@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import './Select.scss';
 
 interface SelectProps {
@@ -11,7 +11,7 @@ interface SelectProps {
 
 const Select: FC<SelectProps> = (props) => {
     return (
-        <select className={"select"}  onChange={props.onChange}>
+        <select className={"select"} defaultValue={props.value}  onChange={props.onChange}>
             <option value={""}>{props.name}</option>
             {props.values.map((value, index) => {
                 return <option key={index} value={value}>{props.options[index]}</option>

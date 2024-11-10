@@ -6,6 +6,8 @@ import DeleteButton from "../../common/DeleteButton/DeleteButton";
 import ViewMoreButton from "../../common/ViewMoreButton/ViewMoreButton";
 import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 import ReminderServices from "../../../services/ReminderServices";
+import reminderPhoto from '../../../assets/reminder.svg';
+
 
 interface ReminderProps {
     reminder: IReminder,
@@ -46,6 +48,7 @@ const Reminder: FC<ReminderProps> = (props) => {
 
     return (
         <div className={"reminder"}>
+            <img src={ reminderPhoto } alt={props.reminder.title}/>
             <p className={"id"}>{props.reminder.id}</p>
             <div className={"text"}>
                 <h3 id="title">{props.reminder.title}</h3>

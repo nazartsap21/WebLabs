@@ -75,14 +75,6 @@ const ModalReminderForm: FC<ModalReminderFormProps> = ({reminder, setReminder, h
                 {/*    <option value={"hobby"}>Hobby</option>*/}
                 {/*    <option value={"others"}>Others</option>*/}
                 {/*</select>*/}
-
-                <Select
-                    name={"Priority"}
-                    values={["low", "medium", "high"]}
-                    options={["Low", "Medium", "High"]}
-                    value={reminder.priority}
-                    onChange={(e) => setReminder({...reminder, priority: e.target.value})}
-                />
                 <Select
                     name={"Subject"}
                     values={["family", "health", "job", "education", "hobby", "others"]}

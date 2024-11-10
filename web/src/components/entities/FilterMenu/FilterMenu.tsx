@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
 import './FilterMenu.scss';
 import Select from "../../common/Select/Select";
+import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 
 
 interface FilterMenuProps {
-    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
+    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
 }
 
 const FilterMenu: FC<FilterMenuProps> = (props) => {
@@ -19,11 +20,11 @@ const FilterMenu: FC<FilterMenuProps> = (props) => {
                 onChange={e => {props.setSearchOptions(prev => ({...prev, price: e.target.value}))}}
             />
             <Select
-                name={"Priority"}
-                values={["low", "medium", "high"]}
-                options={["Low", "Medium", "High"]}
+                name={"Due Date"}
+                values={["1d", "1w", "1m", "1m+"]}
+                options={["Today", "1 day - 1 week", "1 week - 1 month", "1 month and more"]}
                 value={""}
-                onChange={e => {props.setSearchOptions(prev => ({...prev, priority: e.target.value}))}}
+                onChange={e => {props.setSearchOptions(prev => ({...prev, date: e.target.value}))}}
             />
             <Select
                 name={"Subject"}

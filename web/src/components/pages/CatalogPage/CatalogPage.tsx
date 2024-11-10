@@ -6,7 +6,7 @@ import {IReminder} from "../../../interfaces/reminderInterfaces";
 
 
 const CatalogPage: FC = () => {
-    const [searchOptions, setSearchOptions] = useState<ISearchOptions>({ search: '', sort: '', price: '', priority: '', subject: '' });
+    const [searchOptions, setSearchOptions] = useState<ISearchOptions>({ search: '', sort: '', price: '', date: '', subject: '' });
     const [reminders, setReminders] = useState<IReminder[]>([]);
 
     return (

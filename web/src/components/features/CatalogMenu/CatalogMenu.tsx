@@ -11,7 +11,7 @@ interface CatalogMenuProps {
     reminders: IReminder[];
     setReminders: React.Dispatch<React.SetStateAction<IReminder[]>>;
     searchOptions: ISearchOptions;
-    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
+    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
 }
 
 
@@ -23,7 +23,7 @@ const CatalogMenu: FC<CatalogMenuProps> = ({reminders, setReminders, searchOptio
 
     const handleNewReminder = async (e: FormEvent) => {
         e.preventDefault();
-        if (!newReminder.title || !newReminder.description || !newReminder.price || !newReminder.dueDate || !newReminder.priority || !newReminder.subject) {
+        if (!newReminder.title || !newReminder.description || !newReminder.price || !newReminder.dueDate || !newReminder.subject) {
             return alert("Please fill in all the fields.");
         }
 

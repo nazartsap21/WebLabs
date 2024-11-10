@@ -1,8 +1,9 @@
 const reminder = require('../db/models/reminder');
 const { Op } = require('sequelize');
+const moment = require('moment');
 
 const get = async (req, res, next) => {
-    const { search, sort, price, priority, subject } = req.query;
+    const { search, sort, price, date, subject } = req.query;
     console.log(req.query);
     let queryOptions = {
         where: {}
@@ -27,8 +28,32 @@ const get = async (req, res, next) => {
         }
     }
 
-    if (priority) {
-        queryOptions.where.priority = priority;
+    if (date) {
+        const today = moment().startOf('day');
+        switch (date) {
+            case '1d':
+                queryOptions.where.dueDate = {
+                    [Op.between]: [today.toDate(), moment(today).endOf('day').toDate()]
+                };
+                break;
+            case '1w':
+                queryOptions.where.dueDate = {
+                    [Op.between]: [moment(today).add(1, 'day').toDate(), moment(today).add(1, 'week').endOf('day').toDate()]
+                };
+                break;
+            case '1m':
+                queryOptions.where.dueDate = {
+                    [Op.between]: [moment(today).add(1, 'week').toDate(), moment(today).add(1, 'month').endOf('day').toDate()]
+                };
+                break;
+            case '1m+':
+                queryOptions.where.dueDate = {
+                    [Op.gte]: moment(today).add(1, 'month').startOf('day').toDate()
+                };
+                break;
+            default:
+                break;
+        }
     }
 
     if (subject) {
@@ -90,7 +115,7 @@ const create = async (req, res, next) => {
         });
     }
 
-    const {id, title, description, dueDate, lastUpdated, price, priority, subject} = req.body;
+    const {id, title, description, dueDate, lastUpdated, price, subject} = req.body;
 
     try {
         const existingReminder = await reminder.findOne({
@@ -113,7 +138,6 @@ const create = async (req, res, next) => {
             dueDate: dueDate,
             lastUpdated: new Date(),
             price: price,
-            priority: priority,
             subject: subject
         });
 
@@ -170,7 +194,6 @@ const update = async (req, res, next) => {
         reminderById.dueDate = body.dueDate;
         reminderById.lastUpdated = body.lastUpdated;
         reminderById.price = body.price;
-        reminderById.priority = body.priority;
         reminderById.subject = body.subject;
 
         await reminderById.save();

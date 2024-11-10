@@ -10,7 +10,7 @@ import ReminderServices from "../../../services/ReminderServices";
 const RemindersPreview: FC = () => {
     const [reminders, setReminders] = useState<IReminder[]>([])
     const [counter, setCounter] = useState<number>(3);
-    const emptySearch = { search: '', sort: '', price: '', priority: '', subject: '' };
+    const emptySearch = { search: '', sort: '', price: '', date: '', subject: '' };
 
     const getReminders = async () => {
         const response = await ReminderServices.getAllReminders(emptySearch);

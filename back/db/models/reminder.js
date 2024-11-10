@@ -36,9 +36,6 @@ module.exports = sequelize.define('reminder', {
   deletedAt: {
     type: Sequelize.DATE
   },
-  priority: {
-    type: Sequelize.STRING
-  },
   subject: {
     type: Sequelize.STRING
   },

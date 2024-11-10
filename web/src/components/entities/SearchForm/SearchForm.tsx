@@ -2,9 +2,10 @@ import React, {FC, useState} from 'react';
 import './SearchForm.scss';
 import reset from './reset.svg';
 import search from './search.svg';
+import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 
 interface SearchFormProps {
-    setSearchOptions: React.Dispatch<React.SetStateAction<{ search: string, sort: string, price: string, priority: string, subject: string }>>;
+    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
 }
 
 const SearchForm: FC<SearchFormProps> = (props) => {
