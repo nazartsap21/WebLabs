@@ -1,0 +1,10 @@
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 14px;
+
+  span{
+    color: var(--blue);
+  }
+}

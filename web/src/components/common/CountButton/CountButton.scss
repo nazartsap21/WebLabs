@@ -1,0 +1,14 @@
+.count-button {
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  color: var(--blue);
+  padding: 6px 16px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+  &:active {
+    scale: 0.95;
+  }
+}

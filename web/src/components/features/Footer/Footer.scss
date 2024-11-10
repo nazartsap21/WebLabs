@@ -1,0 +1,27 @@
+footer {
+  padding: 40px 60px;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  & > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  hr {
+    width: 100%;
+    color: black;
+  }
+
+  h3 {
+    align-self: center;
+  }
+}
+
+.links {
+  display: flex;
+  column-gap: 20px;
+}

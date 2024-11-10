@@ -1,0 +1,14 @@
+.create-reminder {
+  border: 1px solid var(--blue);
+  border-radius: 25px;
+  color: var(--blue);
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+  &:active {
+    scale: 0.95;
+  }
+}
