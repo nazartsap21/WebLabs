@@ -6,31 +6,28 @@ import FilterMenu from "../../entities/FilterMenu/FilterMenu";
 import {defaultReminder, IReminder} from "../../../interfaces/reminderInterfaces";
 import Reminder from "../../entities/Reminder/Reminder";
 import ModalReminderForm from "../../entities/ModalReminderForm/ModalReminderForm";
-import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 import ReminderServices from "../../../services/ReminderServices";
+import {AppDispatch, RootState} from "../../../store/store.config";
+import {getReminders} from "../../../store/reminderSlice";
+import {setSearchOption} from "../../../store/reminderSlice";
+import {useDispatch, useSelector} from "react-redux";
+import Loader from "../../common/Loader/Loader";
+import {TRUE} from "sass";
 
-
-interface CatalogItemsProps {
-    reminders: IReminder[];
-    setReminders: React.Dispatch<React.SetStateAction<IReminder[]>>;
-    searchOptions: ISearchOptions;
-    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
-}
-
-const CatalogItems: FC<CatalogItemsProps> = ({reminders, setReminders, searchOptions, setSearchOptions}) => {
+const CatalogItems: FC = () => {
     const [active, setActive] = useState<boolean>(false);
     const [editedReminder, setEditedReminder] = useState<IReminder>(defaultReminder);
-
-
-    const getReminders = useCallback(async () => {
-        const response = await ReminderServices.getAllReminders(searchOptions);
-        setReminders(response.data.data);
-        console.log(response.data);
-    }, [setReminders, searchOptions]);
+    const {
+        reminders,
+        searchOptions,
+        status
+    } = useSelector((state: RootState) => state.remindersReducer);
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        getReminders().then();
-    }, [getReminders]);
+        dispatch(getReminders(searchOptions));
+    }, [dispatch, searchOptions]);
+
 
     const handleEditedReminder = async (e: FormEvent) => {
         e.preventDefault();
@@ -44,7 +41,7 @@ const CatalogItems: FC<CatalogItemsProps> = ({reminders, setReminders, searchOpt
         }
 
         await ReminderServices.updateReminder(editedReminder);
-        getReminders().then();
+        dispatch(getReminders(searchOptions));
         setActive(false);
         setEditedReminder(defaultReminder);
     }
@@ -52,20 +49,25 @@ const CatalogItems: FC<CatalogItemsProps> = ({reminders, setReminders, searchOpt
     return (
         <section className={"main-container"}>
             <div className={'menu'}>
-                <SortMenu setSearchOptions={setSearchOptions}/>
+                <SortMenu
+                    setSearchOptions={(e) => dispatch(setSearchOption({...searchOptions, sort: e.target.value}))}
+                />
                 <hr/>
-                <FilterMenu setSearchOptions={setSearchOptions}/>
+                <FilterMenu
+                    setPriceOptions={(e) => dispatch(setSearchOption({...searchOptions, price: e.target.value}))}
+                    setDateOptions={(e) => dispatch(setSearchOption({...searchOptions, date: e.target.value}))}
+                    setSubjectOptions={(e) => dispatch(setSearchOption({...searchOptions, subject: e.target.value}))}
+                />
                 {/*<hr/>*/}
                 {/*<CountPrice/>*/}
             </div>
             <div className={"reminders-container"}>
-                {reminders.map((value, key) => (
+                {status === "pending" && <Loader />}
+                {reminders?.map((reminder: IReminder) => (
                     <Reminder
-                        key={key}
-                        reminder={value}
-                        setReminders={setReminders}
-                        searchOptions={searchOptions}
-                        onUpdateModal={() => {setActive(true); setEditedReminder(value)}}
+                        key={reminder.id}
+                        reminder={reminder}
+                        onUpdateModal={() => {setActive(true); setEditedReminder(reminder)}}
                     />
                 ))}
             </div>

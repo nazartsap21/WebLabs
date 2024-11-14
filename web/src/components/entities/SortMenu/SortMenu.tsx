@@ -4,9 +4,9 @@ import Select from "../../common/Select/Select";
 import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 
 interface SortMenuProps {
-    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
+    setSearchOptions: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
-const SortMenu: FC<SortMenuProps> = (props) => {
+const SortMenu: FC<SortMenuProps> = ({ setSearchOptions }) => {
     return (
         <form className={'sort-menu'}>
             <label htmlFor="sort">Sort:</label>
@@ -15,7 +15,7 @@ const SortMenu: FC<SortMenuProps> = (props) => {
                 values={["sooner", "later", "a-z", "z-a"]}
                 options={["By due date (sooner first)", "By due date (later first)", "A-Z", "Z-A"]}
                 value={""}
-                onChange={e => {props.setSearchOptions(prev => ({...prev, sort: e.target.value}))}}
+                onChange={setSearchOptions}
             />
         </form>
     );

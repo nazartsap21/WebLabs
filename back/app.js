@@ -1,6 +1,7 @@
 require('dotenv').config({path: `${process.cwd()}/.env`});
 const express = require('express');
 const reminderRouter = require('./routes/reminderRoutes');
+const cartRouter = require('./routes/cartRoutes');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/reminders', reminderRouter);
+app.use('/cart', cartRouter);
 
 
 app.use('*', (req, res, next) => {

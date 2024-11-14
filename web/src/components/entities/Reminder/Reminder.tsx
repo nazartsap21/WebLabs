@@ -5,24 +5,30 @@ import UpdateButton from "../../common/UpdateButton/UpdateButton";
 import DeleteButton from "../../common/DeleteButton/DeleteButton";
 import ViewMoreButton from "../../common/ViewMoreButton/ViewMoreButton";
 import {ISearchOptions} from "../../../interfaces/commonInterfaces";
-import ReminderServices from "../../../services/ReminderServices";
 import reminderPhoto from '../../../assets/reminder.svg';
+
+import ReminderServices from "../../../services/ReminderServices";
+import {AppDispatch, RootState} from "../../../store/store.config";
+import {getReminders} from "../../../store/reminderSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 
 interface ReminderProps {
     reminder: IReminder,
-    setReminders: React.Dispatch<React.SetStateAction<IReminder[]>>,
-    searchOptions: ISearchOptions,
     onUpdateModal: () => void;
 }
 
 const Reminder: FC<ReminderProps> = (props) => {
+    const dispatch = useDispatch<AppDispatch>();
+    const {
+        searchOptions
+    } = useSelector((state: RootState) => state.remindersReducer);
     const [dueDate, setDueDate] = useState('');
     const [lastUpdated, setLastUpdated] = useState('');
 
     const handleDelete = () => {
         ReminderServices.deleteReminder(props.reminder.id).then(() => {
-            ReminderServices.getAllReminders(props.searchOptions).then(response => props.setReminders(response.data.data));
+            dispatch(getReminders(searchOptions));
         });
     }
 

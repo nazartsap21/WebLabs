@@ -4,21 +4,21 @@ import SearchForm from "../../entities/SearchForm/SearchForm";
 import './CatalogMenu.scss';
 import ModalReminderForm from "../../entities/ModalReminderForm/ModalReminderForm";
 import {defaultReminder, IReminder} from "../../../interfaces/reminderInterfaces";
-import {ISearchOptions} from "../../../interfaces/commonInterfaces";
 import ReminderServices from "../../../services/ReminderServices";
-
-interface CatalogMenuProps {
-    reminders: IReminder[];
-    setReminders: React.Dispatch<React.SetStateAction<IReminder[]>>;
-    searchOptions: ISearchOptions;
-    setSearchOptions: React.Dispatch<React.SetStateAction<ISearchOptions>>;
-}
+import {AppDispatch, RootState} from "../../../store/store.config";
+import {getReminders} from "../../../store/reminderSlice";
+import {setSearchOption} from "../../../store/reminderSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 
-const CatalogMenu: FC<CatalogMenuProps> = ({reminders, setReminders, searchOptions, setSearchOptions}) => {
+const CatalogMenu: FC = () => {
+    const {
+        reminders,
+        searchOptions
+    } = useSelector((state: RootState) => state.remindersReducer);
     const [active, setActive] = useState<boolean>(false);
     const [newReminder, setNewReminder] = useState<IReminder>(defaultReminder);
-
+    const dispatch = useDispatch<AppDispatch>();
 
 
     const handleNewReminder = async (e: FormEvent) => {
@@ -31,7 +31,7 @@ const CatalogMenu: FC<CatalogMenuProps> = ({reminders, setReminders, searchOptio
             return alert("The due date cannot be in the past.");
         }
 
-        const isNameUnique = !reminders.some(reminder => reminder.title === newReminder.title);
+        const isNameUnique = !reminders?.some(reminder => reminder.title === newReminder.title);
         if (!isNameUnique) {
             alert('Reminder title must be unique');
             return;
@@ -40,7 +40,7 @@ const CatalogMenu: FC<CatalogMenuProps> = ({reminders, setReminders, searchOptio
 
         setActive(false);
         setNewReminder(defaultReminder);
-        await ReminderServices.getAllReminders(searchOptions).then(response => setReminders(response.data.data));
+        dispatch(getReminders(searchOptions));
     }
     return (
             <section className={"reminders-menu"}>
@@ -48,7 +48,7 @@ const CatalogMenu: FC<CatalogMenuProps> = ({reminders, setReminders, searchOptio
                     <h2 className="h2">Reminders</h2>
                     <CreateButton name={"Create reminder"} CreateModal={() => setActive(true)}/>
                 </div>
-                <SearchForm setSearchOptions={setSearchOptions}/>
+                <SearchForm setSearchOptions={(e) => dispatch(setSearchOption({...searchOptions, search: e?.target.value || ''}))}/>
                 <ModalReminderForm
                     reminder={newReminder}
                     setReminder={setNewReminder}

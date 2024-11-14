@@ -24,7 +24,14 @@ const Header: FC = () => {
                             Catalog
                         </NavLink>
                     </li>
-                    <li><a href="/">Cart</a></li>
+                    <li>
+                        <NavLink
+                            to="/cart"
+                            className={({ isActive }) => isActive ? 'active' : ''}
+                        >
+                            Cart
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>

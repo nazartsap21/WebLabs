@@ -4,38 +4,34 @@ import bird from './Bird.svg';
 import MoreButton from "../../common/MoreButton/MoreButton";
 import ReminderPreview from "../../entities/ReminerPreview/ReminderPreview";
 import {Link} from "react-router-dom";
-import {IReminder} from "../../../interfaces/reminderInterfaces";
-import ReminderServices from "../../../services/ReminderServices";
+import {AppDispatch, RootState} from "../../../store/store.config";
+import {useDispatch, useSelector} from "react-redux";
+import {getReminders} from "../../../store/reminderSlice";
+import {defaultSearchOptions} from "../../../interfaces/commonInterfaces";
 
 const RemindersPreview: FC = () => {
-    const [reminders, setReminders] = useState<IReminder[]>([])
+    const dispatch = useDispatch<AppDispatch>();
+    const { reminders } = useSelector((state: RootState) => state.remindersReducer);
     const [counter, setCounter] = useState<number>(3);
-    const emptySearch = { search: '', sort: '', price: '', date: '', subject: '' };
-
-    const getReminders = async () => {
-        const response = await ReminderServices.getAllReminders(emptySearch);
-        setReminders(response.data.data);
-    };
 
     const handleShowMore = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setCounter(prevCounter => prevCounter + 3);
     }
 
-
     useEffect(() => {
-        getReminders().then();
+        dispatch(getReminders(defaultSearchOptions));
     }, []);
 
     return (
         <section className={"reminders-preview"}>
             <Link className={'view-all'} to={"catalog"}>View all <img src={bird} alt={"bird"}/></Link>
             <div className={"reminders-preview-container"}>
-                {reminders.slice(0, counter).map(reminder => (
+                {reminders?.slice(0, counter).map(reminder => (
                     <ReminderPreview key={reminder.id} {...reminder}/>
                 ))}
             </div>
-            {counter < reminders.length && (
+            {reminders && counter < reminders.length && (
                 <MoreButton name={'View more'} handleClick={handleShowMore}/>
             )}
         </section>
