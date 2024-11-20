@@ -84,7 +84,7 @@ const CartPage: FC = () => {
             <h2 className={"total-price"}>Total price: {calculateTotalPrice()} $</h2>
             <div className={"cart-navigation"}>
                 <Link to={"/catalog"}>Back to catalog</Link>
-                <button>Continue</button>
+                <Link to={"/checkout"}>Continue</Link>
             </div>
         </section>
     );
