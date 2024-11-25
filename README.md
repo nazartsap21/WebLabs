@@ -1,7 +1,7 @@
 ## Лабораторні роботи з дисципліни "Вебтехнології та вебдизайн"
 
 ### Виконав: Цап Назар Володимирович (ІР-21)
-### Лабораторна робота №11 (Варіант 10)
+### Лабораторна робота №12 (Варіант 10)
 
-#### React.js: Formik: Cart page (Checkout & Success)
-Description: Finish your project by creating the last of three cart pages - Checkout & Success pages. As a bonus, you will learn a very handy and powerful form validation library - Formik.
+#### BONUS (React.js): Sign Up & Login pages
+Description: Extra tasks for highly interested in Frontend development students. This work is more complicated than others, so stay strong - the reward is worth it ;)
