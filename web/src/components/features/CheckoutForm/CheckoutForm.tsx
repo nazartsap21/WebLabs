@@ -9,29 +9,28 @@ const CheckoutForm = () => {
     const navigate = useNavigate();
     const checkoutSchema = Yup.object().shape({
         firstName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
+            .min(2, 'Too Short Firstname!')
+            .max(50, 'Too Long Firstname!')
+            .required('Required Firstname'),
         lastName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
+            .min(2, 'Too Short Lastname!')
+            .max(50, 'Too Long Lastname!')
+            .required('Required Lastname'),
         email: Yup.string()
             .email('Invalid email')
-            .required('Required'),
+            .required('Required email'),
         phone: Yup.string()
             .matches(/^[0-9]+$/, 'Invalid phone number')
-            .min(10, 'Too Short!')
-            .max(15, 'Too Long!')
-            .required('Required'),
+            .min(10, 'Too Short Phone number!')
+            .max(15, 'Too Long Phone number!')
+            .required('Required Phone number'),
         address: Yup.string()
-            .min(5, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
+            .min(5, 'Too Short Address!')
+            .max(50, 'Too Long Address!')
+            .required('Required Address'),
     });
 
-    const handleSubmit = (values: any) => {
-        console.log(values);
+    const handleSubmit = () => {
         navigate('/success');
     }
     return (
@@ -45,7 +44,7 @@ const CheckoutForm = () => {
             }}
             validationSchema={checkoutSchema}
             onSubmit={(values, { resetForm}) => {
-                handleSubmit(values);
+                handleSubmit();
                 resetForm();
             }}>
             {({errors, touched}) => (

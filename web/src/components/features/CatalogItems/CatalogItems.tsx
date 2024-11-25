@@ -1,4 +1,4 @@
-import React, {FC, FormEvent, useCallback, useEffect, useState} from 'react';
+import React, {FC, FormEvent, useEffect, useState} from 'react';
 import './CatalogItems.scss';
 import SortMenu from "../../entities/SortMenu/SortMenu";
 // import CountPrice from "../../common/CountPrice/CountPrice";
@@ -12,7 +12,6 @@ import {getReminders} from "../../../store/reminderSlice";
 import {setSearchOption} from "../../../store/reminderSlice";
 import {useDispatch, useSelector} from "react-redux";
 import Loader from "../../common/Loader/Loader";
-import {TRUE} from "sass";
 
 const CatalogItems: FC = () => {
     const [active, setActive] = useState<boolean>(false);

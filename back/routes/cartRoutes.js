@@ -1,6 +1,4 @@
-// web/src/routes/cartRoutes.js
 const express = require('express');
-const { getAll, getById, create, update, remove } = require('../controllers/cartControllers');
 const cartControllers = require("../controllers/cartControllers");
 const router = express.Router();
 
