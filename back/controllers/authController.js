@@ -11,6 +11,10 @@ const register = async (req, res, next) => {
     const { username, email, password } = req.body;
 
     try {
+        const userExists = await User.findOne({ where: { username } });
+        if (userExists) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
         const user = await User.create({ username, email, password });
         res.status(201).json(user);
     } catch (error) {
@@ -57,9 +61,31 @@ const checkToken = (req, res, next) => {
     }
 };
 
+
+const getUserId = async (req, res, next) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.status(400).json({ valid: false, message: 'Token not provided' });
+    }
+
+    try {
+        const decoded = jwt.decode(token);
+        const user = await User.findOne({ where: { username: decoded.username } });
+        if (decoded && (decoded.username || decoded.email)) {
+            return res.status(200).json({ userId: user.id });
+        } else {
+            return res.status(400).json({ valid: false, message: 'Invalid token' });
+        }
+    } catch (error) {
+        return res.status(400).json({valid: false, message: 'Error'});
+    }
+}
+
 module.exports = {
     register,
     login,
     checkToken,
+    getUserId,
 };
 

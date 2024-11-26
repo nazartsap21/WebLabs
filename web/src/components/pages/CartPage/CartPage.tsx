@@ -8,12 +8,21 @@ import { defaultSearchOptions, ICart } from "../../../interfaces/commonInterface
 import { Link } from "react-router-dom";
 import reminderPhoto from "../../../assets/reminder.svg";
 import { getReminders } from "../../../store/reminderSlice";
+import AuthServices from "../../../services/AuthServices";
 
 const CartPage: FC = () => {
     const { cart } = useSelector((state: RootState) => state.cartReducer);
     const { reminders } = useSelector((state: RootState) => state.remindersReducer);
     const dispatch = useDispatch<AppDispatch>();
-    const [quantity, setQuantity] = useState<number>();
+    const [userId, setUserId] = useState<number>(0);
+    // const [quantity, setQuantity] = useState<number>();
+    const token = localStorage.getItem('token');
+
+    const getId = async () => {
+        const response = await AuthServices.getUserId(token || '');
+        const userId = response.data.userId;
+        setUserId(userId);
+    }
 
     useEffect(() => {
         dispatch(getCart()).then(() => {
@@ -22,25 +31,25 @@ const CartPage: FC = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log(cart);
-    }, [cart]);
+        getId();
+    }, []);
 
-    const handleItemDelete = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+    const handleItemDelete = async (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
         e.preventDefault();
-        CartServices.removeFromCart(id).then(() => {
+        CartServices.removeFromCart(id, userId).then(() => {
             dispatch(getCart());
         });
-        console.log(id);
     }
 
-    const handleItemEdit = (e: React.MouseEvent<HTMLButtonElement>, id: string, gap: number) => {
+    const handleItemEdit = async (e: React.MouseEvent<HTMLButtonElement>, id: number, reminderId: number,  gap: number) => {
         e.preventDefault();
-        const item = cart?.find(item => item.reminderId === +id);
+
+        const item = cart?.find(item => item.reminderId === reminderId && item.id === id);
         if (item) {
             if (item.quantity + gap <= 0) {
-                CartServices.removeFromCart(item.id).then(() => dispatch(getCart()));
+                CartServices.removeFromCart(userId, item.id).then(() => dispatch(getCart()));
             } else {
-                CartServices.updateCart({ ...item, quantity: item.quantity + gap }).then(() => dispatch(getCart()));
+                CartServices.updateCart(id, { userId, quantity: item.quantity + gap, priority: item.priority }).then(() => dispatch(getCart()));
             }
         }
     }
@@ -69,9 +78,9 @@ const CartPage: FC = () => {
                                     <p>Priority: {item.priority}</p>
                                 </div>
                                 <div className={"cart-item-actions"}>
-                                    <button className={"quantity-button"} onClick={(e) => handleItemEdit(e, item.reminderId.toString(), 1)}>+</button>
+                                    <button className={"quantity-button"} onClick={(e) => handleItemEdit(e, item.id, item.reminderId, 1)}>+</button>
                                     <h3>{item.quantity}</h3>
-                                    <button className={"quantity-button"} onClick={(e) => handleItemEdit(e, item.reminderId.toString(), -1)}>-</button>
+                                    <button className={"quantity-button"} onClick={(e) => handleItemEdit(e, item.id, item.reminderId, -1)}>-</button>
                                 </div>
                                 <div className={"cart-item-info"}>
                                     <h3>{reminders && (reminders.find(reminder => reminder.id === item.reminderId)?.price ?? 0) * item.quantity} $</h3>

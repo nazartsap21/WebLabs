@@ -14,4 +14,8 @@ export default class AuthServices {
     static async checkToken(token: string): Promise<AxiosResponse<{valid: boolean}>> {
         return $api.post('/auth/checkToken', {token});
     }
+
+    static async getUserId(token: string): Promise<AxiosResponse<{userId: number}>> {
+        return $api.post('/auth/getUserId', {token});
+    }
 }

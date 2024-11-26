@@ -6,6 +6,7 @@ import {IReminder} from "../../../interfaces/reminderInterfaces";
 import ReminderServices from "../../../services/ReminderServices";
 import Select from "../../common/Select/Select";
 import CartServices from "../../../services/CartServices";
+import AuthServices from "../../../services/AuthServices";
 
 const ItemPage: FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -13,6 +14,7 @@ const ItemPage: FC = () => {
     const [quantity, setQuantity] = useState<number>(0);
     const [priority, setPriority] = useState<number>();
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
         ReminderServices.getReminder(Number(id)).then(response => { console.log(response.data); setReminder(response.data.data)});
@@ -33,11 +35,14 @@ const ItemPage: FC = () => {
                     return;
                 }
 
-                await CartServices.addToCart({id: 0, reminderId: reminder.id, quantity: quantity, priority: priority});
-                alert('Reminder added to cart');
+                const response = await AuthServices.getUserId(token || '');
+                const userId = response.data.userId;
 
+                await CartServices.addToCart({ userId: userId, reminderId: reminder.id, quantity: quantity, priority: priority });
+                alert('Reminder added to cart');
             }
         } catch (e) {
+            console.error(e);
         }
     }
 

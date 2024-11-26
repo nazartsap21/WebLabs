@@ -4,9 +4,14 @@ import {Formik, Form, Field} from "formik";
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
 import FormError from "../../entities/FormError/FormError";
+import CartServices from "../../../services/CartServices";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../store/store.config";
+import AuthServices from "../../../services/AuthServices";
 
 const CheckoutForm = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
     const checkoutSchema = Yup.object().shape({
         firstName: Yup.string()
             .min(2, 'Too Short Firstname!')
@@ -18,6 +23,7 @@ const CheckoutForm = () => {
             .required('Required Lastname'),
         email: Yup.string()
             .email('Invalid email')
+            .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Invalid email')
             .required('Required email'),
         phone: Yup.string()
             .matches(/^[0-9]+$/, 'Invalid phone number')
@@ -30,9 +36,13 @@ const CheckoutForm = () => {
             .required('Required Address'),
     });
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         navigate('/success');
+        const response = await AuthServices.getUserId(token || '');
+        const userId = response.data.userId;
+        await CartServices.clearCart(userId);
     }
+
     return (
         <Formik
             initialValues={{

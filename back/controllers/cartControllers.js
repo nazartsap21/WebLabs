@@ -2,8 +2,14 @@
 const Cart = require('../db/models/cart');
 
 const getAll = async (req, res, next) => {
+    const { userId } = req.params;
+    if (!userId) {
+        console.log(userId);
+        return res.status(400).json({ message: 'User ID is required' });
+    }
+
     try {
-        const cart = await Cart.findAll();
+        const cart = await Cart.findAll({ where: { userId } });
         res.status(200).json({
             data: cart,
         });
@@ -14,9 +20,10 @@ const getAll = async (req, res, next) => {
 
 const getById = async (req, res, next) => {
     const { id } = req.params;
+    const { userId } = req.body;
 
     try {
-        const cart = await Cart.findByPk(id);
+        const cart = await Cart.findOne({ where: { userId, id } });
         res.status(200).json(cart);
     } catch (error) {
         next(error);
@@ -24,16 +31,16 @@ const getById = async (req, res, next) => {
 };
 
 const create = async (req, res, next) => {
-    const { reminderId, quantity, priority } = req.body;
+    const { userId, reminderId, quantity, priority } = req.body;
 
     try {
-        let cartItem = await Cart.findOne({ where: { reminderId, priority } });
+        let cartItem = await Cart.findOne({ where: { userId, reminderId, priority } });
 
         if (cartItem) {
             cartItem.quantity += quantity;
             await cartItem.save();
         } else {
-            cartItem = await Cart.create({ reminderId, quantity, priority });
+            cartItem = await Cart.create({ userId, reminderId, quantity, priority });
         }
 
         res.status(201).json(cartItem);
@@ -44,10 +51,11 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
     const { id } = req.params;
-    const { quantity, priority } = req.body;
+    const { userId, quantity, priority } = req.body;
+    console.log(id);
 
     try {
-        const cart = await Cart.update({ quantity, priority }, { where: { id } });
+        const cart = await Cart.update({ quantity, priority }, { where: { userId, id } });
         res.status(200).json(cart);
     } catch (error) {
         next(error);
@@ -56,13 +64,26 @@ const update = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
     const { id } = req.params;
+    const { userId } = req.body;
 
     try {
-        const cart = await Cart.destroy({ where: { id } });
+        const cart = await Cart.destroy({ where: { userId, id } });
         res.status(200).json(cart);
     } catch (error) {
         next(error);
     }
 };
 
-module.exports = { getAll, getById, create, update, remove };
+
+const removeAll = async (req, res, next) => {
+    const { userId } = req.body;
+
+    try {
+        const cart = await Cart.destroy({ where: { userId } });
+        res.status(200).json({ message: 'Cart is cleared!' });
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = { getAll, getById, create, update, remove, removeAll };

@@ -1,11 +1,16 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import CartServices from "../services/CartServices";
 import {ICart} from "../interfaces/commonInterfaces";
+import AuthServices from "../services/AuthServices";
 
 export const getCart = createAsyncThunk(
     'cart/getCart',
     async () => {
-        return CartServices.getCart();
+        const token = localStorage.getItem('token');
+        const response = await AuthServices.getUserId(token || '');
+        const userId = response.data.userId;
+        console.log(userId);
+        return CartServices.getCart(userId);
     }
 );
 
